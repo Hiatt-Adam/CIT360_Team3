@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eagle_scout_requirements;
+package cit360teamproject;
 
 /**
  *
  * @author hiattech
  */
-public class Eagle_Scout_Requirements {
+public class CIT360TeamProject {
 
     /**
      * @param args the command line arguments

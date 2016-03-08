@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 8, 2016 11:54:48 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cit360teamproject.Eaglereqs" table="EAGLEREQS" schema="ROOT" optimistic-lock="version">
+        <id name="requirementnumber" type="short">
+            <column name="REQUIREMENTNUMBER" />
+            <generator class="assigned" />
+        </id>
+        <property name="requirement" type="string">
+            <column name="REQUIREMENT" length="32700" />
+        </property>
+        <property name="datecompleted" type="date">
+            <column name="DATECOMPLETED" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

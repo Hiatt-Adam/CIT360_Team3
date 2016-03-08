@@ -1,3 +1,8 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,13 +13,17 @@
  *
  * @author hiattech
  */
-public class NewOrExistingScout extends javax.swing.JFrame {
-
+public class NewOrExistingScout extends javax.swing.JFrame implements ActionListener {
     /**
      * Creates new form NewOrExistingScout
      */
     public NewOrExistingScout() {
         initComponents();
+        
+        JButton open = new JButton("New Window");
+        open.addActionListener(this);
+        add(open);
+        setVisible(true);
     }
 
     /**
@@ -28,6 +37,7 @@ public class NewOrExistingScout extends javax.swing.JFrame {
 
         eagleScoutReqsLbl = new javax.swing.JLabel();
         eagleScoutReqsLbl1 = new javax.swing.JLabel();
+        NewOrExistLbl = new javax.swing.JLabel();
 
         eagleScoutReqsLbl.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         eagleScoutReqsLbl.setForeground(new java.awt.Color(0, 0, 204));
@@ -39,7 +49,8 @@ public class NewOrExistingScout extends javax.swing.JFrame {
         eagleScoutReqsLbl.setInheritsPopupMenu(false);
         eagleScoutReqsLbl.setName("eagleScoutReqsLbl"); // NOI18N
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("NewOrExistingScout");
 
         eagleScoutReqsLbl1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         eagleScoutReqsLbl1.setForeground(new java.awt.Color(0, 0, 204));
@@ -51,13 +62,23 @@ public class NewOrExistingScout extends javax.swing.JFrame {
         eagleScoutReqsLbl1.setInheritsPopupMenu(false);
         eagleScoutReqsLbl1.setName("eagleScoutReqsLbl"); // NOI18N
 
+        NewOrExistLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        NewOrExistLbl.setForeground(new java.awt.Color(0, 0, 255));
+        NewOrExistLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NewOrExistLbl.setText("Select an Existing Scout or Create a New Scout");
+        NewOrExistLbl.setToolTipText("Select an Existing Scout or Create a New Scout");
+        NewOrExistLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        NewOrExistLbl.setName("NewOrExistLbl"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NewOrExistLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -65,7 +86,9 @@ public class NewOrExistingScout extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(eagleScoutReqsLbl1)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(NewOrExistLbl)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,7 +130,13 @@ public class NewOrExistingScout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel NewOrExistLbl;
     private javax.swing.JLabel eagleScoutReqsLbl;
     private javax.swing.JLabel eagleScoutReqsLbl1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

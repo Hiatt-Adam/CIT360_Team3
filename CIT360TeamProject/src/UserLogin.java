@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import cit360teamproject.CIT360TeamProject.*;
 
 /**
  *
@@ -32,8 +33,17 @@ public class UserLogin extends javax.swing.JFrame {
         UserPassFld = new javax.swing.JPasswordField();
         LoginButton = new javax.swing.JButton();
         CreateUser = new javax.swing.JButton();
+        EmailLbl = new javax.swing.JLabel();
+        LoginPassword = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("EAGLE SCOUT REQUIREMENTS");
+        setName("Eagle Scout Requirements"); // NOI18N
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         eagleScoutReqsLbl.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         eagleScoutReqsLbl.setForeground(new java.awt.Color(0, 0, 204));
@@ -55,11 +65,16 @@ public class UserLogin extends javax.swing.JFrame {
         nameAndPassLbl.setName("nameAndPassLbl"); // NOI18N
 
         UserNameTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        UserNameTxt.setText("Enter Username");
+        UserNameTxt.setToolTipText("Enter Username");
         UserNameTxt.setName("userNameTxt"); // NOI18N
 
-        UserPassFld.setText("Enter Password");
+        UserPassFld.setToolTipText("Enter Password");
         UserPassFld.setName("UserPassFld"); // NOI18N
+        UserPassFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserPassFldActionPerformed(evt);
+            }
+        });
 
         LoginButton.setText("Login");
         LoginButton.setToolTipText("Login");
@@ -82,6 +97,18 @@ public class UserLogin extends javax.swing.JFrame {
             }
         });
 
+        EmailLbl.setForeground(new java.awt.Color(0, 51, 204));
+        EmailLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EmailLbl.setText("Email Address");
+        EmailLbl.setToolTipText("Enter Email Address");
+        EmailLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        LoginPassword.setForeground(new java.awt.Color(0, 51, 204));
+        LoginPassword.setText("Password");
+        LoginPassword.setToolTipText("LoginPassword");
+        LoginPassword.setName("LoginPassword"); // NOI18N
+        LoginPassword.setNextFocusableComponent(UserPassFld);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,15 +125,22 @@ public class UserLogin extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(195, 195, 195)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(UserPassFld)
+                                    .addComponent(UserPassFld, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                                     .addComponent(UserNameTxt)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(102, 102, 102)
                                 .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(104, 104, 104)
-                                .addComponent(CreateUser)))
+                                .addComponent(CreateUser))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(213, 213, 213)
+                                .addComponent(EmailLbl)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(219, 219, 219)
+                .addComponent(LoginPassword)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,12 +148,16 @@ public class UserLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(eagleScoutReqsLbl)
                 .addGap(18, 18, 18)
-                .addComponent(nameAndPassLbl)
-                .addGap(38, 38, 38)
-                .addComponent(UserNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nameAndPassLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(UserPassFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(EmailLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(UserNameTxt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LoginPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(UserPassFld)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CreateUser))
@@ -130,17 +168,32 @@ public class UserLogin extends javax.swing.JFrame {
         UserNameTxt.getAccessibleContext().setAccessibleDescription("Enter Username");
         UserPassFld.getAccessibleContext().setAccessibleName("Password");
         UserPassFld.getAccessibleContext().setAccessibleDescription("Enter Password");
+        LoginPassword.getAccessibleContext().setAccessibleDescription("Login Password");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        // TODO add your handling code here:
+        if (evt.getSource() == LoginButton) {
+            this.dispose();
+            NewOrExistingScout newOrExistingScout = new NewOrExistingScout();
+        }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void CreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateUserActionPerformed
-        // TODO add your handling code here:
+        if (evt.getSource() == CreateUser) {
+            this.dispose();
+            NewOrExistingScout newOrExistingScout = new NewOrExistingScout();            
+        }
     }//GEN-LAST:event_CreateUserActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void UserPassFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserPassFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserPassFldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,7 +231,9 @@ public class UserLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreateUser;
+    private javax.swing.JLabel EmailLbl;
     private javax.swing.JButton LoginButton;
+    private javax.swing.JLabel LoginPassword;
     private javax.swing.JFormattedTextField UserNameTxt;
     private javax.swing.JPasswordField UserPassFld;
     private javax.swing.JLabel eagleScoutReqsLbl;

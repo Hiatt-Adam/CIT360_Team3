@@ -1,3 +1,8 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,8 +13,13 @@
  *
  * @author hiattech
  */
-public class ExistingScout extends javax.swing.JFrame {
-
+public class ExistingScout extends javax.swing.JFrame implements ActionListener {
+    
+   /*  JButton open = new JButton("New Window");
+        open.addActionListener(this);
+        add(open);
+        setVisible(true);
+*/ 
     /**
      * Creates new form ExistingScout
      */
@@ -98,4 +108,9 @@ public class ExistingScout extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel eagleScoutReqsLbl1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

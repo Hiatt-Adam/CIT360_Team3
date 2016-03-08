@@ -2,12 +2,17 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="EAGLE SCOUT REQUIREMENTS"/>
+    <Property name="name" type="java.lang.String" value="Eagle Scout Requirements" noResource="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -37,7 +42,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="UserPassFld" max="32767" attributes="0"/>
+                                  <Component id="UserPassFld" pref="106" max="32767" attributes="0"/>
                                   <Component id="UserNameTxt" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -47,26 +52,39 @@
                               <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                               <Component id="CreateUser" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
+                              <Component id="EmailLbl" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+              <Component id="LoginPassword" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="eagleScoutReqsLbl" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="nameAndPassLbl" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Component id="UserNameTxt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="UserPassFld" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Component id="nameAndPassLbl" max="32767" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Component id="EmailLbl" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <Component id="UserNameTxt" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <Component id="LoginPassword" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="UserPassFld" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="LoginButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CreateUser" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -121,7 +139,7 @@
     <Component class="javax.swing.JFormattedTextField" name="UserNameTxt">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Enter Username"/>
+        <Property name="toolTipText" type="java.lang.String" value="Enter Username"/>
         <Property name="name" type="java.lang.String" value="userNameTxt" noResource="true"/>
       </Properties>
       <AccessibilityProperties>
@@ -131,13 +149,16 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="UserPassFld">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Enter Password"/>
+        <Property name="toolTipText" type="java.lang.String" value="Enter Password"/>
         <Property name="name" type="java.lang.String" value="UserPassFld" noResource="true"/>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Password"/>
         <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Enter Password"/>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UserPassFldActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="LoginButton">
       <Properties>
@@ -167,6 +188,33 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateUserActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="EmailLbl">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="33" red="0" type="rgb"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Email Address"/>
+        <Property name="toolTipText" type="java.lang.String" value="Enter Email Address"/>
+        <Property name="horizontalTextPosition" type="int" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LoginPassword">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="33" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Password"/>
+        <Property name="toolTipText" type="java.lang.String" value="LoginPassword"/>
+        <Property name="name" type="java.lang.String" value="LoginPassword" noResource="true"/>
+        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="UserPassFld"/>
+        </Property>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Login Password"/>
+      </AccessibilityProperties>
     </Component>
   </SubComponents>
 </Form>

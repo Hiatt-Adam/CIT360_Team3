@@ -1,3 +1,8 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,13 +13,18 @@
  *
  * @author hiattech
  */
-public class NewScout extends javax.swing.JFrame {
+public class NewScout extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form NewScout
      */
     public NewScout() {
         initComponents();
+        // listener to open this window
+        JButton open = new JButton("New Window");
+        open.addActionListener(this);
+        add(open);
+        setVisible(true);
     }
 
     /**
@@ -27,8 +37,17 @@ public class NewScout extends javax.swing.JFrame {
     private void initComponents() {
 
         eagleScoutReqsLbl1 = new javax.swing.JLabel();
+        NewScoutLbl = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        ScoutFirstNameTxt = new javax.swing.JTextField();
+        ScoutLastNameTxt = new javax.swing.JTextField();
+        ScoutDOBTxt = new javax.swing.JFormattedTextField();
+        AddScoutBtn = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         eagleScoutReqsLbl1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         eagleScoutReqsLbl1.setForeground(new java.awt.Color(0, 0, 204));
@@ -40,25 +59,125 @@ public class NewScout extends javax.swing.JFrame {
         eagleScoutReqsLbl1.setInheritsPopupMenu(false);
         eagleScoutReqsLbl1.setName("eagleScoutReqsLbl"); // NOI18N
 
+        NewScoutLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        NewScoutLbl.setForeground(new java.awt.Color(0, 0, 255));
+        NewScoutLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NewScoutLbl.setText("Create A New Scout");
+        NewScoutLbl.setToolTipText("Create A New Scout");
+        NewScoutLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
+        NewScoutLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        NewScoutLbl.setName("NewScoutLbl"); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Scout First Name:");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Scout Last Name:");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Scout Date of Birth:");
+
+        ScoutFirstNameTxt.setToolTipText("Scout First Name");
+        ScoutFirstNameTxt.setName("ScoutFirstNameTxt"); // NOI18N
+        ScoutFirstNameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ScoutFirstNameTxtActionPerformed(evt);
+            }
+        });
+
+        ScoutLastNameTxt.setToolTipText("Scout Last Name");
+        ScoutLastNameTxt.setName("ScoutLastNameTxt"); // NOI18N
+        ScoutLastNameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ScoutLastNameTxtActionPerformed(evt);
+            }
+        });
+
+        ScoutDOBTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        ScoutDOBTxt.setToolTipText("Scout Date of Birth");
+
+        AddScoutBtn.setText("Add Scout");
+        AddScoutBtn.setToolTipText("Add Scout");
+        AddScoutBtn.setName("AddScoutBtn"); // NOI18N
+
+        BackBtn.setText("Back");
+        BackBtn.setToolTipText("Back to Previous Menu");
+        BackBtn.setMaximumSize(new java.awt.Dimension(81, 23));
+        BackBtn.setMinimumSize(new java.awt.Dimension(81, 23));
+        BackBtn.setPreferredSize(new java.awt.Dimension(81, 23));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NewScoutLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addComponent(AddScoutBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ScoutFirstNameTxt)
+                            .addComponent(ScoutLastNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                            .addComponent(ScoutDOBTxt))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(eagleScoutReqsLbl1)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(NewScoutLbl)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(ScoutFirstNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(ScoutLastNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(ScoutDOBTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddScoutBtn))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
+
+        ScoutFirstNameTxt.getAccessibleContext().setAccessibleName("Scout First Name");
+        ScoutLastNameTxt.getAccessibleContext().setAccessibleName("Scout Last Name");
+        ScoutDOBTxt.getAccessibleContext().setAccessibleName("Scout Date of Birth");
+        ScoutDOBTxt.getAccessibleContext().setAccessibleDescription("Scout Date of Birth");
+        BackBtn.getAccessibleContext().setAccessibleName("Back to Previous Menu");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ScoutFirstNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScoutFirstNameTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ScoutFirstNameTxtActionPerformed
+
+    private void ScoutLastNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScoutLastNameTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ScoutLastNameTxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,6 +215,20 @@ public class NewScout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddScoutBtn;
+    private javax.swing.JButton BackBtn;
+    private javax.swing.JLabel NewScoutLbl;
+    private javax.swing.JFormattedTextField ScoutDOBTxt;
+    private javax.swing.JTextField ScoutFirstNameTxt;
+    private javax.swing.JTextField ScoutLastNameTxt;
     private javax.swing.JLabel eagleScoutReqsLbl1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

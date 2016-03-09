@@ -1,3 +1,8 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,13 +13,18 @@
  *
  * @author hiattech
  */
-public class BadgeReqs extends javax.swing.JFrame {
+public class BadgeReqs extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form BadgeReqs
      */
     public BadgeReqs() {
         initComponents();
+        // listener to open this window
+        JButton open = new JButton("New Window");
+        open.addActionListener(this);
+        add(open);
+        setVisible(true);
     }
 
     /**
@@ -27,6 +37,12 @@ public class BadgeReqs extends javax.swing.JFrame {
     private void initComponents() {
 
         eagleScoutReqsLbl1 = new javax.swing.JLabel();
+        BadgeReqLbl = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        BadgeReqTbl = new javax.swing.JTable();
+        BackBtn = new javax.swing.JButton();
+        CompleteBtn = new javax.swing.JButton();
+        SelectMeritBadgeBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,22 +56,106 @@ public class BadgeReqs extends javax.swing.JFrame {
         eagleScoutReqsLbl1.setInheritsPopupMenu(false);
         eagleScoutReqsLbl1.setName("eagleScoutReqsLbl"); // NOI18N
 
+        BadgeReqLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        BadgeReqLbl.setForeground(new java.awt.Color(0, 0, 255));
+        BadgeReqLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        BadgeReqLbl.setText("Merit Badge Requirements");
+        BadgeReqLbl.setToolTipText("Merit Badge Requirements");
+        BadgeReqLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
+        BadgeReqLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BadgeReqLbl.setName("BadgeReqLbl"); // NOI18N
+
+        BadgeReqTbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
+        BadgeReqTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Complete", "Requirement Details", "Completed Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        BadgeReqTbl.setToolTipText("Merit Badge Requirements");
+        BadgeReqTbl.setColumnSelectionAllowed(true);
+        BadgeReqTbl.setName("BadgeReqTbl"); // NOI18N
+        BadgeReqTbl.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(BadgeReqTbl);
+        BadgeReqTbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (BadgeReqTbl.getColumnModel().getColumnCount() > 0) {
+            BadgeReqTbl.getColumnModel().getColumn(0).setPreferredWidth(8);
+            BadgeReqTbl.getColumnModel().getColumn(2).setPreferredWidth(10);
+        }
+        BadgeReqTbl.getAccessibleContext().setAccessibleName("Merit Badge Requirements");
+        BadgeReqTbl.getAccessibleContext().setAccessibleDescription("Merit Badge Requirements");
+
+        BackBtn.setText("Back");
+        BackBtn.setToolTipText("Back");
+        BackBtn.setMaximumSize(new java.awt.Dimension(103, 23));
+        BackBtn.setMinimumSize(new java.awt.Dimension(103, 23));
+        BackBtn.setPreferredSize(new java.awt.Dimension(103, 23));
+
+        CompleteBtn.setText("Mark Complete");
+        CompleteBtn.setToolTipText("Mark Complete");
+
+        SelectMeritBadgeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Merit Badge 1", "Merit Badge 2", "Merit Badge 3", "Merit Badge 4", "Merit Badge 5", "Merit Badge 6", "Merit Badge 7", "Merit Badge 8", "Merit Badge 9", "Merit Badge 10", " " }));
+        SelectMeritBadgeBox.setToolTipText("Select a Merit Badge to Display");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BadgeReqLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CompleteBtn)
+                        .addGap(100, 100, 100)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addComponent(SelectMeritBadgeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(eagleScoutReqsLbl1)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(BadgeReqLbl)
+                .addGap(18, 18, 18)
+                .addComponent(SelectMeritBadgeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CompleteBtn))
+                .addGap(21, 21, 21))
         );
+
+        BadgeReqLbl.getAccessibleContext().setAccessibleDescription("Merit Badge Requirements");
+        SelectMeritBadgeBox.getAccessibleContext().setAccessibleName("Select a Merit Badge to Display");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -96,6 +196,17 @@ public class BadgeReqs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
+    private javax.swing.JLabel BadgeReqLbl;
+    private javax.swing.JTable BadgeReqTbl;
+    private javax.swing.JButton CompleteBtn;
+    private javax.swing.JComboBox<String> SelectMeritBadgeBox;
     private javax.swing.JLabel eagleScoutReqsLbl1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -15,16 +15,17 @@ import javax.swing.JButton;
  */
 public class ExistingScout extends javax.swing.JFrame implements ActionListener {
     
-   /*  JButton open = new JButton("New Window");
-        open.addActionListener(this);
-        add(open);
-        setVisible(true);
-*/ 
+ 
     /**
      * Creates new form ExistingScout
      */
     public ExistingScout() {
         initComponents();
+        // listener to open this window
+        JButton open = new JButton("New Window");
+        open.addActionListener(this);
+        add(open);
+        setVisible(true);
     }
 
     /**
@@ -37,8 +38,14 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
     private void initComponents() {
 
         eagleScoutReqsLbl1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        ExistingScoutLbl = new javax.swing.JLabel();
+        SelectScoutBtn = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Select Existing Scout");
 
         eagleScoutReqsLbl1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         eagleScoutReqsLbl1.setForeground(new java.awt.Color(0, 0, 204));
@@ -50,22 +57,86 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
         eagleScoutReqsLbl1.setInheritsPopupMenu(false);
         eagleScoutReqsLbl1.setName("eagleScoutReqsLbl"); // NOI18N
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "First Name", "Last Name", "Date of Birth"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setToolTipText("");
+        jTable1.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        ExistingScoutLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ExistingScoutLbl.setForeground(new java.awt.Color(0, 0, 255));
+        ExistingScoutLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ExistingScoutLbl.setText("Select an Existing Scout");
+        ExistingScoutLbl.setToolTipText("Select an Existing Scout");
+        ExistingScoutLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
+        ExistingScoutLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ExistingScoutLbl.setName("ExistingScoutLbl"); // NOI18N
+
+        SelectScoutBtn.setToolTipText("Select Scout");
+
+        BackBtn.setText("Back");
+        BackBtn.setToolTipText("Previous Menu");
+        BackBtn.setMaximumSize(new java.awt.Dimension(91, 23));
+        BackBtn.setMinimumSize(new java.awt.Dimension(91, 23));
+        BackBtn.setPreferredSize(new java.awt.Dimension(91, 23));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ExistingScoutLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(115, Short.MAX_VALUE)
+                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(SelectScoutBtn)
+                .addGap(115, 115, 115))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(eagleScoutReqsLbl1)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(ExistingScoutLbl)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SelectScoutBtn)
+                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
+
+        BackBtn.getAccessibleContext().setAccessibleName("Previous Menu");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -106,7 +177,12 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
+    private javax.swing.JLabel ExistingScoutLbl;
+    private javax.swing.JButton SelectScoutBtn;
     private javax.swing.JLabel eagleScoutReqsLbl1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     @Override

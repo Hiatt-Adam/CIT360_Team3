@@ -52,10 +52,17 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="eagleScoutReqsLbl1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="eagleScoutReqsLbl1" alignment="0" pref="484" max="32767" attributes="0"/>
                   <Component id="NewOrExistLbl" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+              <Component id="ExistingScoutBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+              <Component id="NewScoutBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -66,7 +73,12 @@
               <Component id="eagleScoutReqsLbl1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="NewOrExistLbl" max="-2" attributes="0"/>
-              <EmptySpace pref="203" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ExistingScoutBtn" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="NewScoutBtn" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="46" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,9 +118,37 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Select an Existing Scout or Create a New Scout"/>
         <Property name="toolTipText" type="java.lang.String" value="Select an Existing Scout or Create a New Scout"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="0" green="ff" red="ff" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="name" type="java.lang.String" value="NewOrExistLbl" noResource="true"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="ExistingScoutBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Select Existing Scout"/>
+        <Property name="toolTipText" type="java.lang.String" value="Select Existing Scout"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExistingScoutBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="NewScoutBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create New Scout"/>
+        <Property name="toolTipText" type="java.lang.String" value="Create New Scout"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[131, 23]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewScoutBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

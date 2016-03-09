@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,7 +20,7 @@ public class NewOrExistingScout extends javax.swing.JFrame implements ActionList
      */
     public NewOrExistingScout() {
         initComponents();
-        
+        // listener to open this window
         JButton open = new JButton("New Window");
         open.addActionListener(this);
         add(open);
@@ -38,6 +39,8 @@ public class NewOrExistingScout extends javax.swing.JFrame implements ActionList
         eagleScoutReqsLbl = new javax.swing.JLabel();
         eagleScoutReqsLbl1 = new javax.swing.JLabel();
         NewOrExistLbl = new javax.swing.JLabel();
+        ExistingScoutBtn = new javax.swing.JButton();
+        NewScoutBtn = new javax.swing.JButton();
 
         eagleScoutReqsLbl.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         eagleScoutReqsLbl.setForeground(new java.awt.Color(0, 0, 204));
@@ -67,8 +70,26 @@ public class NewOrExistingScout extends javax.swing.JFrame implements ActionList
         NewOrExistLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NewOrExistLbl.setText("Select an Existing Scout or Create a New Scout");
         NewOrExistLbl.setToolTipText("Select an Existing Scout or Create a New Scout");
+        NewOrExistLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
         NewOrExistLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         NewOrExistLbl.setName("NewOrExistLbl"); // NOI18N
+
+        ExistingScoutBtn.setText("Select Existing Scout");
+        ExistingScoutBtn.setToolTipText("Select Existing Scout");
+        ExistingScoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExistingScoutBtnActionPerformed(evt);
+            }
+        });
+
+        NewScoutBtn.setText("Create New Scout");
+        NewScoutBtn.setToolTipText("Create New Scout");
+        NewScoutBtn.setPreferredSize(new java.awt.Dimension(131, 23));
+        NewScoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewScoutBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,9 +98,15 @@ public class NewOrExistingScout extends javax.swing.JFrame implements ActionList
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                     .addComponent(NewOrExistLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(ExistingScoutBtn)
+                .addGap(101, 101, 101)
+                .addComponent(NewScoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,11 +115,29 @@ public class NewOrExistingScout extends javax.swing.JFrame implements ActionList
                 .addComponent(eagleScoutReqsLbl1)
                 .addGap(18, 18, 18)
                 .addComponent(NewOrExistLbl)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ExistingScoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NewScoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ExistingScoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExistingScoutBtnActionPerformed
+           if (evt.getSource() == ExistingScoutBtn){
+            this.dispose();
+            ExistingScout existingScout = new ExistingScout();            
+        }
+    }//GEN-LAST:event_ExistingScoutBtnActionPerformed
+
+    private void NewScoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewScoutBtnActionPerformed
+           if (evt.getSource() == NewScoutBtn){
+               this.dispose();
+               NewScout newScout = new NewScout();
+           }
+    }//GEN-LAST:event_NewScoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,7 +175,9 @@ public class NewOrExistingScout extends javax.swing.JFrame implements ActionList
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ExistingScoutBtn;
     private javax.swing.JLabel NewOrExistLbl;
+    private javax.swing.JButton NewScoutBtn;
     private javax.swing.JLabel eagleScoutReqsLbl;
     private javax.swing.JLabel eagleScoutReqsLbl1;
     // End of variables declaration//GEN-END:variables

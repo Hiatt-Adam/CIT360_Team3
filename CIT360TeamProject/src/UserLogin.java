@@ -61,6 +61,7 @@ public class UserLogin extends javax.swing.JFrame {
         nameAndPassLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nameAndPassLbl.setText("Enter Username and Password");
         nameAndPassLbl.setToolTipText("Enter Username and Password");
+        nameAndPassLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
         nameAndPassLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         nameAndPassLbl.setName("nameAndPassLbl"); // NOI18N
 

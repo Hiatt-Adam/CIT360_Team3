@@ -132,6 +132,13 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Enter Username and Password"/>
         <Property name="toolTipText" type="java.lang.String" value="Enter Username and Password"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="0" green="ff" red="ff" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="name" type="java.lang.String" value="nameAndPassLbl" noResource="true"/>
       </Properties>

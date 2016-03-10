@@ -1,3 +1,8 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,13 +13,18 @@
  *
  * @author hiattech
  */
-public class BadgeOrEagleReqs extends javax.swing.JFrame {
+public class BadgeOrEagleReqs extends javax.swing.JFrame implements ActionListener {
 
     /**
      * Creates new form BadgeOrEagleReqs
      */
     public BadgeOrEagleReqs() {
         initComponents();
+        // listener to open this window
+        JButton open = new JButton("New Window");
+        open.addActionListener(this);
+        add(open);
+        setVisible(true);
     }
 
     /**
@@ -162,4 +172,9 @@ public class BadgeOrEagleReqs extends javax.swing.JFrame {
     private javax.swing.JButton MeritBadgeBtn;
     private javax.swing.JLabel eagleScoutReqsLbl1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

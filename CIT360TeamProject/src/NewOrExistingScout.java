@@ -126,14 +126,14 @@ public class NewOrExistingScout extends javax.swing.JFrame implements ActionList
     }// </editor-fold>//GEN-END:initComponents
 
     private void ExistingScoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExistingScoutBtnActionPerformed
-           if (evt.getSource() == ExistingScoutBtn){
+        if (evt.getSource() == ExistingScoutBtn){
             this.dispose();
             ExistingScout existingScout = new ExistingScout();            
         }
     }//GEN-LAST:event_ExistingScoutBtnActionPerformed
 
     private void NewScoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewScoutBtnActionPerformed
-           if (evt.getSource() == NewScoutBtn){
+        if (evt.getSource() == NewScoutBtn){
                this.dispose();
                NewScout newScout = new NewScout();
            }

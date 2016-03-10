@@ -100,19 +100,33 @@ public class BadgeReqs extends javax.swing.JFrame implements ActionListener{
             BadgeReqTbl.getColumnModel().getColumn(2).setPreferredWidth(10);
         }
         BadgeReqTbl.getAccessibleContext().setAccessibleName("Merit Badge Requirements");
-        BadgeReqTbl.getAccessibleContext().setAccessibleDescription("Merit Badge Requirements");
 
         BackBtn.setText("Back");
         BackBtn.setToolTipText("Back");
         BackBtn.setMaximumSize(new java.awt.Dimension(103, 23));
         BackBtn.setMinimumSize(new java.awt.Dimension(103, 23));
         BackBtn.setPreferredSize(new java.awt.Dimension(103, 23));
+        BackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackBtnActionPerformed(evt);
+            }
+        });
 
         CompleteBtn.setText("Mark Complete");
         CompleteBtn.setToolTipText("Mark Complete");
+        CompleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompleteBtnActionPerformed(evt);
+            }
+        });
 
         SelectMeritBadgeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Merit Badge 1", "Merit Badge 2", "Merit Badge 3", "Merit Badge 4", "Merit Badge 5", "Merit Badge 6", "Merit Badge 7", "Merit Badge 8", "Merit Badge 9", "Merit Badge 10", " " }));
         SelectMeritBadgeBox.setToolTipText("Select a Merit Badge to Display");
+        SelectMeritBadgeBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectMeritBadgeBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,11 +168,26 @@ public class BadgeReqs extends javax.swing.JFrame implements ActionListener{
                 .addGap(21, 21, 21))
         );
 
-        BadgeReqLbl.getAccessibleContext().setAccessibleDescription("Merit Badge Requirements");
         SelectMeritBadgeBox.getAccessibleContext().setAccessibleName("Select a Merit Badge to Display");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
+        if (evt.getSource() == BackBtn) {
+            this.dispose();
+            BadgeOrEagleReqs badgeOrEagleReqs = new BadgeOrEagleReqs();
+        }
+    }//GEN-LAST:event_BackBtnActionPerformed
+
+    private void SelectMeritBadgeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectMeritBadgeBoxActionPerformed
+        // insert statement(s) to query badge requirements based on scout selected and return list.
+    }//GEN-LAST:event_SelectMeritBadgeBoxActionPerformed
+
+    private void CompleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompleteBtnActionPerformed
+        // insert statement to mark badge complete and set the date in DB
+
+    }//GEN-LAST:event_CompleteBtnActionPerformed
 
     /**
      * @param args the command line arguments

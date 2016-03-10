@@ -98,13 +98,24 @@ public class NewScout extends javax.swing.JFrame implements ActionListener{
 
         AddScoutBtn.setText("Add Scout");
         AddScoutBtn.setToolTipText("Add Scout");
+        AddScoutBtn.setActionCommand("AddScoutBtn");
         AddScoutBtn.setName("AddScoutBtn"); // NOI18N
+        AddScoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddScoutBtnActionPerformed(evt);
+            }
+        });
 
         BackBtn.setText("Back");
         BackBtn.setToolTipText("Back to Previous Menu");
         BackBtn.setMaximumSize(new java.awt.Dimension(81, 23));
         BackBtn.setMinimumSize(new java.awt.Dimension(81, 23));
         BackBtn.setPreferredSize(new java.awt.Dimension(81, 23));
+        BackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,7 +176,6 @@ public class NewScout extends javax.swing.JFrame implements ActionListener{
         ScoutFirstNameTxt.getAccessibleContext().setAccessibleName("Scout First Name");
         ScoutLastNameTxt.getAccessibleContext().setAccessibleName("Scout Last Name");
         ScoutDOBTxt.getAccessibleContext().setAccessibleName("Scout Date of Birth");
-        ScoutDOBTxt.getAccessibleContext().setAccessibleDescription("Scout Date of Birth");
         BackBtn.getAccessibleContext().setAccessibleName("Back to Previous Menu");
 
         pack();
@@ -178,6 +188,18 @@ public class NewScout extends javax.swing.JFrame implements ActionListener{
     private void ScoutLastNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScoutLastNameTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ScoutLastNameTxtActionPerformed
+
+    private void AddScoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddScoutBtnActionPerformed
+       // insert statement to check name and DOB fields. If any are blank, return error.
+       // insert statement to add name/DOB to database and return success message
+    }//GEN-LAST:event_AddScoutBtnActionPerformed
+
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
+            if (evt.getSource() == BackBtn) {
+            this.dispose();
+            NewOrExistingScout newOrExistingScout = new NewOrExistingScout();
+        }  
+    }//GEN-LAST:event_BackBtnActionPerformed
 
     /**
      * @param args the command line arguments

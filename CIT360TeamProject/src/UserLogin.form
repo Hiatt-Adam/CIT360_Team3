@@ -151,7 +151,6 @@
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Username"/>
-        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Enter Username"/>
       </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="UserPassFld">
@@ -161,7 +160,6 @@
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Password"/>
-        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Enter Password"/>
       </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UserPassFldActionPerformed"/>

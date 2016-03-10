@@ -112,9 +112,6 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="name" type="java.lang.String" value="BadgeReqLbl" noResource="true"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Merit Badge Requirements"/>
-      </AccessibilityProperties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
@@ -167,7 +164,6 @@
           </Properties>
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Merit Badge Requirements"/>
-            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Merit Badge Requirements"/>
           </AccessibilityProperties>
         </Component>
       </SubComponents>
@@ -186,12 +182,18 @@
           <Dimension value="[103, 23]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="CompleteBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mark Complete"/>
         <Property name="toolTipText" type="java.lang.String" value="Mark Complete"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CompleteBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="SelectMeritBadgeBox">
       <Properties>
@@ -216,6 +218,9 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Select a Merit Badge to Display"/>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SelectMeritBadgeBoxActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

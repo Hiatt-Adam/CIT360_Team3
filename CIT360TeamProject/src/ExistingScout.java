@@ -94,13 +94,24 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
         ExistingScoutLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ExistingScoutLbl.setName("ExistingScoutLbl"); // NOI18N
 
+        SelectScoutBtn.setText("Select Scout");
         SelectScoutBtn.setToolTipText("Select Scout");
+        SelectScoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectScoutBtnActionPerformed(evt);
+            }
+        });
 
         BackBtn.setText("Back");
         BackBtn.setToolTipText("Previous Menu");
         BackBtn.setMaximumSize(new java.awt.Dimension(91, 23));
         BackBtn.setMinimumSize(new java.awt.Dimension(91, 23));
         BackBtn.setPreferredSize(new java.awt.Dimension(91, 23));
+        BackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,11 +125,11 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
                     .addComponent(ExistingScoutLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addGap(100, 100, 100)
                 .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
+                .addGap(96, 96, 96)
                 .addComponent(SelectScoutBtn)
-                .addGap(115, 115, 115))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +142,7 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SelectScoutBtn)
+                    .addComponent(SelectScoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -140,6 +151,21 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
+        if (evt.getSource() == BackBtn) {
+            this.dispose();
+            NewOrExistingScout newOrExistingScout = new NewOrExistingScout();
+        }
+    }//GEN-LAST:event_BackBtnActionPerformed
+
+    private void SelectScoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectScoutBtnActionPerformed
+        // insert statement to select scout from DB
+        if (evt.getSource() == SelectScoutBtn) {
+            this.dispose();
+            BadgeOrEagleReqs badgeOrEagleReqs = new BadgeOrEagleReqs();
+        }
+    }//GEN-LAST:event_SelectScoutBtnActionPerformed
 
     /**
      * @param args the command line arguments

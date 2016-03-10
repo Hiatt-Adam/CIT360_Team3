@@ -97,9 +97,19 @@ public class EagleReqs extends javax.swing.JFrame implements ActionListener{
         BackBtn.setMaximumSize(new java.awt.Dimension(109, 23));
         BackBtn.setMinimumSize(new java.awt.Dimension(109, 23));
         BackBtn.setPreferredSize(new java.awt.Dimension(109, 23));
+        BackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackBtnActionPerformed(evt);
+            }
+        });
 
         MarkCompleteBtn.setText("Mark Completed");
         MarkCompleteBtn.setToolTipText("Mark Completed");
+        MarkCompleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MarkCompleteBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,6 +149,17 @@ public class EagleReqs extends javax.swing.JFrame implements ActionListener{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
+        if (evt.getSource() == BackBtn) {
+            this.dispose();
+            BadgeOrEagleReqs badgeOrEagleReqs = new BadgeOrEagleReqs();
+        }
+    }//GEN-LAST:event_BackBtnActionPerformed
+
+    private void MarkCompleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarkCompleteBtnActionPerformed
+        // insert statement to mark badge complete and set the date in DB
+    }//GEN-LAST:event_MarkCompleteBtnActionPerformed
 
     /**
      * @param args the command line arguments

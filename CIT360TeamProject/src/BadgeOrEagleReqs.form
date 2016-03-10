@@ -126,9 +126,6 @@
         <Property name="text" type="java.lang.String" value="View Eagle Scout Requirements"/>
         <Property name="toolTipText" type="java.lang.String" value="View Eagle Scout Requirements"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="View Eagle Scout Requirements"/>
-      </AccessibilityProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EagleReqsBtnActionPerformed"/>
       </Events>

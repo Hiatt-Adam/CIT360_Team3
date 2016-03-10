@@ -194,15 +194,18 @@
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Scout Date of Birth"/>
-        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Scout Date of Birth"/>
       </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JButton" name="AddScoutBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Scout"/>
         <Property name="toolTipText" type="java.lang.String" value="Add Scout"/>
+        <Property name="actionCommand" type="java.lang.String" value="AddScoutBtn"/>
         <Property name="name" type="java.lang.String" value="AddScoutBtn" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddScoutBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BackBtn">
       <Properties>
@@ -221,6 +224,9 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Back to Previous Menu"/>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -175,6 +175,8 @@ public class UserLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        // insert statement to check if username or password line are blank. return error if either blank
+        // insert statement to compare username/password with database. If no match, return error. If match, login
         if (evt.getSource() == LoginButton) {
             this.dispose();
             NewOrExistingScout newOrExistingScout = new NewOrExistingScout();
@@ -182,6 +184,8 @@ public class UserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void CreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateUserActionPerformed
+        // insert statement to verify valid username/password
+        // insert statement to add user to DB and create blank tables for user.
         if (evt.getSource() == CreateUser) {
             this.dispose();
             NewOrExistingScout newOrExistingScout = new NewOrExistingScout();            

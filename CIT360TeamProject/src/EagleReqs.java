@@ -1,3 +1,8 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,13 +13,18 @@
  *
  * @author hiattech
  */
-public class EagleReqs extends javax.swing.JFrame {
+public class EagleReqs extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form EagleReqs
      */
     public EagleReqs() {
         initComponents();
+        // listener to open this window
+        JButton open = new JButton("New Window");
+        open.addActionListener(this);
+        add(open);
+        setVisible(true);
     }
 
     /**
@@ -27,6 +37,11 @@ public class EagleReqs extends javax.swing.JFrame {
     private void initComponents() {
 
         eagleScoutReqsLbl1 = new javax.swing.JLabel();
+        EagleReqLbl = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        BackBtn = new javax.swing.JButton();
+        MarkCompleteBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,13 +55,78 @@ public class EagleReqs extends javax.swing.JFrame {
         eagleScoutReqsLbl1.setInheritsPopupMenu(false);
         eagleScoutReqsLbl1.setName("eagleScoutReqsLbl"); // NOI18N
 
+        EagleReqLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        EagleReqLbl.setForeground(new java.awt.Color(0, 0, 255));
+        EagleReqLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EagleReqLbl.setText("Eagle Scout Requirements");
+        EagleReqLbl.setToolTipText("Eagle Scout Requirements");
+        EagleReqLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
+        EagleReqLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        EagleReqLbl.setName("EagleReqLbl"); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Completed", "Description", "Completed Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setColumnSelectionAllowed(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        BackBtn.setText("Back");
+        BackBtn.setToolTipText("Previous Menu");
+        BackBtn.setMaximumSize(new java.awt.Dimension(109, 23));
+        BackBtn.setMinimumSize(new java.awt.Dimension(109, 23));
+        BackBtn.setPreferredSize(new java.awt.Dimension(109, 23));
+        BackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackBtnActionPerformed(evt);
+            }
+        });
+
+        MarkCompleteBtn.setText("Mark Completed");
+        MarkCompleteBtn.setToolTipText("Mark Completed");
+        MarkCompleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MarkCompleteBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(BackBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(106, 106, 106)
+                .addComponent(MarkCompleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(99, 99, 99))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EagleReqLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -54,11 +134,32 @@ public class EagleReqs extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(eagleScoutReqsLbl1)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(EagleReqLbl)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MarkCompleteBtn))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
+
+        BackBtn.getAccessibleContext().setAccessibleName("Previous Menu");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
+        if (evt.getSource() == BackBtn) {
+            this.dispose();
+            BadgeOrEagleReqs badgeOrEagleReqs = new BadgeOrEagleReqs();
+        }
+    }//GEN-LAST:event_BackBtnActionPerformed
+
+    private void MarkCompleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarkCompleteBtnActionPerformed
+        // insert statement to mark badge complete and set the date in DB
+    }//GEN-LAST:event_MarkCompleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,6 +197,16 @@ public class EagleReqs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
+    private javax.swing.JLabel EagleReqLbl;
+    private javax.swing.JButton MarkCompleteBtn;
     private javax.swing.JLabel eagleScoutReqsLbl1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

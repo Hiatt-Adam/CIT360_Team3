@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 8, 2016 11:54:48 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cit360teamproject.Scoutinfo" table="SCOUTINFO" schema="ROOT" optimistic-lock="version">
+        <id name="scoutfirstname" type="string">
+            <column name="SCOUTFIRSTNAME" length="30" />
+            <generator class="assigned" />
+        </id>
+        <property name="scoutlastname" type="string">
+            <column name="SCOUTLASTNAME" length="30" />
+        </property>
+        <property name="scoutdob" type="date">
+            <column name="SCOUTDOB" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,3 +1,8 @@
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,13 +13,19 @@
  *
  * @author hiattech
  */
-public class ExistingScout extends javax.swing.JFrame {
-
+public class ExistingScout extends javax.swing.JFrame implements ActionListener {
+    
+ 
     /**
      * Creates new form ExistingScout
      */
     public ExistingScout() {
         initComponents();
+        // listener to open this window
+        JButton open = new JButton("New Window");
+        open.addActionListener(this);
+        add(open);
+        setVisible(true);
     }
 
     /**
@@ -27,8 +38,14 @@ public class ExistingScout extends javax.swing.JFrame {
     private void initComponents() {
 
         eagleScoutReqsLbl1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        ExistingScoutLbl = new javax.swing.JLabel();
+        SelectScoutBtn = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Select Existing Scout");
 
         eagleScoutReqsLbl1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         eagleScoutReqsLbl1.setForeground(new java.awt.Color(0, 0, 204));
@@ -40,25 +57,115 @@ public class ExistingScout extends javax.swing.JFrame {
         eagleScoutReqsLbl1.setInheritsPopupMenu(false);
         eagleScoutReqsLbl1.setName("eagleScoutReqsLbl"); // NOI18N
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "First Name", "Last Name", "Date of Birth"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setToolTipText("");
+        jTable1.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        ExistingScoutLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        ExistingScoutLbl.setForeground(new java.awt.Color(0, 0, 255));
+        ExistingScoutLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ExistingScoutLbl.setText("Select an Existing Scout");
+        ExistingScoutLbl.setToolTipText("Select an Existing Scout");
+        ExistingScoutLbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
+        ExistingScoutLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ExistingScoutLbl.setName("ExistingScoutLbl"); // NOI18N
+
+        SelectScoutBtn.setText("Select Scout");
+        SelectScoutBtn.setToolTipText("Select Scout");
+        SelectScoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectScoutBtnActionPerformed(evt);
+            }
+        });
+
+        BackBtn.setText("Back");
+        BackBtn.setToolTipText("Previous Menu");
+        BackBtn.setMaximumSize(new java.awt.Dimension(91, 23));
+        BackBtn.setMinimumSize(new java.awt.Dimension(91, 23));
+        BackBtn.setPreferredSize(new java.awt.Dimension(91, 23));
+        BackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(eagleScoutReqsLbl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ExistingScoutLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addComponent(SelectScoutBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(eagleScoutReqsLbl1)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(ExistingScoutLbl)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SelectScoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
+
+        BackBtn.getAccessibleContext().setAccessibleName("Previous Menu");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
+        if (evt.getSource() == BackBtn) {
+            this.dispose();
+            NewOrExistingScout newOrExistingScout = new NewOrExistingScout();
+        }
+    }//GEN-LAST:event_BackBtnActionPerformed
+
+    private void SelectScoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectScoutBtnActionPerformed
+        // insert statement to select scout from DB
+        if (evt.getSource() == SelectScoutBtn) {
+            this.dispose();
+            BadgeOrEagleReqs badgeOrEagleReqs = new BadgeOrEagleReqs();
+        }
+    }//GEN-LAST:event_SelectScoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,6 +203,16 @@ public class ExistingScout extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
+    private javax.swing.JLabel ExistingScoutLbl;
+    private javax.swing.JButton SelectScoutBtn;
     private javax.swing.JLabel eagleScoutReqsLbl1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

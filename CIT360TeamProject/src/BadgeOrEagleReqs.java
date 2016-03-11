@@ -40,6 +40,7 @@ public class BadgeOrEagleReqs extends javax.swing.JFrame implements ActionListen
         BadgeReqLbl = new javax.swing.JLabel();
         MeritBadgeBtn = new javax.swing.JButton();
         EagleReqsBtn = new javax.swing.JButton();
+        BackBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +82,14 @@ public class BadgeOrEagleReqs extends javax.swing.JFrame implements ActionListen
             }
         });
 
+        BackBtn.setText("Back");
+        BackBtn.setToolTipText("Back");
+        BackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,6 +106,10 @@ public class BadgeOrEagleReqs extends javax.swing.JFrame implements ActionListen
                         .addComponent(MeritBadgeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(BackBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,10 +122,10 @@ public class BadgeOrEagleReqs extends javax.swing.JFrame implements ActionListen
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EagleReqsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MeritBadgeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(BackBtn)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
-
-        EagleReqsBtn.getAccessibleContext().setAccessibleDescription("View Eagle Scout Requirements");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -120,16 +133,23 @@ public class BadgeOrEagleReqs extends javax.swing.JFrame implements ActionListen
     private void MeritBadgeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MeritBadgeBtnActionPerformed
         if (evt.getSource() == MeritBadgeBtn){
             this.dispose();
-            NewScout newScout = new NewScout();
+            BadgeReqs badgeReqs = new BadgeReqs();
         }
     }//GEN-LAST:event_MeritBadgeBtnActionPerformed
 
     private void EagleReqsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EagleReqsBtnActionPerformed
         if (evt.getSource() == EagleReqsBtn){
             this.dispose();
-            ExistingScout existingScout = new ExistingScout();
+            EagleReqs eagleReqs = new EagleReqs();
         }
     }//GEN-LAST:event_EagleReqsBtnActionPerformed
+
+    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
+        if (evt.getSource() == BackBtn){
+            this.dispose();
+            ExistingScout existingScout = new ExistingScout();
+        }
+    }//GEN-LAST:event_BackBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +187,7 @@ public class BadgeOrEagleReqs extends javax.swing.JFrame implements ActionListen
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackBtn;
     private javax.swing.JLabel BadgeReqLbl;
     private javax.swing.JButton EagleReqsBtn;
     private javax.swing.JButton MeritBadgeBtn;

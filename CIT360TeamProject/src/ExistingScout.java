@@ -1,7 +1,12 @@
 
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.persistence.Table;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,6 +32,8 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
         add(open);
         setVisible(true);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +46,7 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
 
         eagleScoutReqsLbl1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ExistingScoutTable = new javax.swing.JTable();
         ExistingScoutLbl = new javax.swing.JLabel();
         SelectScoutBtn = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
@@ -57,7 +64,7 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
         eagleScoutReqsLbl1.setInheritsPopupMenu(false);
         eagleScoutReqsLbl1.setName("eagleScoutReqsLbl"); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ExistingScoutTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -80,10 +87,10 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setToolTipText("");
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ExistingScoutTable.setToolTipText("");
+        ExistingScoutTable.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(ExistingScoutTable);
+        ExistingScoutTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         ExistingScoutLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ExistingScoutLbl.setForeground(new java.awt.Color(0, 0, 255));
@@ -205,10 +212,10 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
     private javax.swing.JLabel ExistingScoutLbl;
+    private javax.swing.JTable ExistingScoutTable;
     private javax.swing.JButton SelectScoutBtn;
     private javax.swing.JLabel eagleScoutReqsLbl1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     @Override

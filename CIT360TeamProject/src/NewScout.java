@@ -95,6 +95,11 @@ public class NewScout extends javax.swing.JFrame implements ActionListener{
 
         ScoutDOBTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         ScoutDOBTxt.setToolTipText("Scout Date of Birth");
+        ScoutDOBTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ScoutDOBTxtActionPerformed(evt);
+            }
+        });
 
         AddScoutBtn.setText("Add Scout");
         AddScoutBtn.setToolTipText("Add Scout");
@@ -182,7 +187,7 @@ public class NewScout extends javax.swing.JFrame implements ActionListener{
     }// </editor-fold>//GEN-END:initComponents
 
     private void ScoutFirstNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScoutFirstNameTxtActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_ScoutFirstNameTxtActionPerformed
 
     private void ScoutLastNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScoutLastNameTxtActionPerformed
@@ -200,6 +205,10 @@ public class NewScout extends javax.swing.JFrame implements ActionListener{
             NewOrExistingScout newOrExistingScout = new NewOrExistingScout();
         }  
     }//GEN-LAST:event_BackBtnActionPerformed
+
+    private void ScoutDOBTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScoutDOBTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ScoutDOBTxtActionPerformed
 
     /**
      * @param args the command line arguments

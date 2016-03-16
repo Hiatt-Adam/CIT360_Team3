@@ -133,7 +133,7 @@ public class BadgeOrEagleReqs extends javax.swing.JFrame implements ActionListen
     private void MeritBadgeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MeritBadgeBtnActionPerformed
         if (evt.getSource() == MeritBadgeBtn){
             this.dispose();
-            BadgeReqs badgeReqs = new BadgeReqs();
+            BadgeRequirements badgeReqs = new BadgeRequirements();
         }
     }//GEN-LAST:event_MeritBadgeBtnActionPerformed
 

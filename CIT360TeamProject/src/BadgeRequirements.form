@@ -200,7 +200,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="12">
             <StringItem index="0" value="-- Select --"/>
-            <StringItem index="1" value="Merit Badge 1"/>
+            <StringItem index="1" value="Citizenship in the Community"/>
             <StringItem index="2" value="Merit Badge 2"/>
             <StringItem index="3" value="Merit Badge 3"/>
             <StringItem index="4" value="Merit Badge 4"/>

@@ -1,7 +1,15 @@
 
+import cit360teamproject.Badgereqs;
+import cit360teamproject.HibernateUtil;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,12 +21,12 @@ import javax.swing.JButton;
  *
  * @author hiattech
  */
-public class BadgeReqs extends javax.swing.JFrame implements ActionListener{
+public class BadgeRequirements extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form BadgeReqs
      */
-    public BadgeReqs() {
+    public BadgeRequirements() {
         initComponents();
         // listener to open this window
         JButton open = new JButton("New Window");
@@ -26,7 +34,14 @@ public class BadgeReqs extends javax.swing.JFrame implements ActionListener{
         add(open);
         setVisible(true);
     }
+    private String QUERY_BASED_ON_MERIT_BADGE="select * from badgereqs b where meritbadge like '";
 
+    
+    
+    private void runQueryBasedOnMeritBadge(){
+        
+        executeHQLQuery (QUERY_BASED_ON_MERIT_BADGE + SelectMeritBadgeBox.getSelectedItem());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,7 +135,7 @@ public class BadgeReqs extends javax.swing.JFrame implements ActionListener{
             }
         });
 
-        SelectMeritBadgeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Merit Badge 1", "Merit Badge 2", "Merit Badge 3", "Merit Badge 4", "Merit Badge 5", "Merit Badge 6", "Merit Badge 7", "Merit Badge 8", "Merit Badge 9", "Merit Badge 10", " " }));
+        SelectMeritBadgeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Citizenship in the Community", "Merit Badge 2", "Merit Badge 3", "Merit Badge 4", "Merit Badge 5", "Merit Badge 6", "Merit Badge 7", "Merit Badge 8", "Merit Badge 9", "Merit Badge 10", " " }));
         SelectMeritBadgeBox.setToolTipText("Select a Merit Badge to Display");
         SelectMeritBadgeBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +196,13 @@ public class BadgeReqs extends javax.swing.JFrame implements ActionListener{
     }//GEN-LAST:event_BackBtnActionPerformed
 
     private void SelectMeritBadgeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectMeritBadgeBoxActionPerformed
-        // insert statement(s) to query badge requirements based on scout selected and return list.
+    Object selectedItem = SelectMeritBadgeBox.getSelectedItem();
+if (selectedItem != null)
+{
+    String selectedItemStr = selectedItem.toString();
+    runQueryBasedOnMeritBadge();
+}
+    
     }//GEN-LAST:event_SelectMeritBadgeBoxActionPerformed
 
     private void CompleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompleteBtnActionPerformed
@@ -189,6 +210,19 @@ public class BadgeReqs extends javax.swing.JFrame implements ActionListener{
 
     }//GEN-LAST:event_CompleteBtnActionPerformed
 
+    
+    private void executeHQLQuery(String hql) {
+    try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(hql);
+        List resultList = q.list();
+        displayResult(resultList);
+        session.getTransaction().commit();
+    } catch (HibernateException he) {
+        he.printStackTrace();
+    }
+}
     /**
      * @param args the command line arguments
      */
@@ -206,20 +240,21 @@ public class BadgeReqs extends javax.swing.JFrame implements ActionListener{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BadgeReqs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BadgeRequirements.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BadgeReqs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BadgeRequirements.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BadgeReqs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BadgeRequirements.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BadgeReqs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BadgeRequirements.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BadgeReqs().setVisible(true);
+                new BadgeRequirements().setVisible(true);
             }
         });
     }
@@ -238,4 +273,23 @@ public class BadgeReqs extends javax.swing.JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    private void displayResult(List resultList) {
+    Vector<String> tableHeaders = new Vector<String>();
+    Vector tableData = new Vector();
+    tableHeaders.add("Requirement Number"); 
+    tableHeaders.add("Requirement Details");
+    tableHeaders.add("Requirement Completion Date");
+    
+
+    for(Object o : resultList) {
+        Badgereqs badgereqs = (Badgereqs)o;
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(badgereqs.getReqnumber());
+        oneRow.add(badgereqs.getReqdetails());
+        oneRow.add(badgereqs.getReqcompleteddate());
+        tableData.add(oneRow);
+    }
+    resultTable.setModel(new DefaultTableModel(tableData, tableHeaders));
+}
 }

@@ -4,6 +4,12 @@
  * and open the template in the editor.
  */
 import cit360teamproject.CIT360TeamProject.*;
+import cit360teamproject.Login;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -186,6 +192,19 @@ public class UserLogin extends javax.swing.JFrame {
     private void CreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateUserActionPerformed
         // insert statement to verify valid username/password
         // insert statement to add user to DB and create blank tables for user.
+        
+        String email, password;
+        email = UserNameTxt.getText();
+        password = LoginPassword.getText();
+        SessionFactory sf = new Configuration().configure().buildSessionFactory();
+        Session s = sf.openSession();
+        Transaction tr = s.beginTransaction();
+        Login l = new Login(email, password);
+        s.save(l);
+        tr.commit();
+        s.close();
+        
+        
         if (evt.getSource() == CreateUser) {
             this.dispose();
             NewOrExistingScout newOrExistingScout = new NewOrExistingScout();            

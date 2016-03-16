@@ -1,7 +1,13 @@
 
+import cit360teamproject.HibernateUtil;
+import cit360teamproject.Scoutinfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -197,6 +203,30 @@ public class NewScout extends javax.swing.JFrame implements ActionListener{
     private void AddScoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddScoutBtnActionPerformed
        // insert statement to check name and DOB fields. If any are blank, return error.
        // insert statement to add name/DOB to database and return success message
+       try{
+             
+            if(ScoutFirstNameTxt.getText().isEmpty() == true || ScoutLastNameTxt.getText().isEmpty() == true || ScoutDOBTxt.getText().isEmpty() == true){
+                JOptionPane.showMessageDialog(null, "Please fill all fields to add item");
+            }
+            else{
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                session.beginTransaction();
+ 
+                Scoutinfo scoutinfo = new Scoutinfo();
+                scoutinfo.setScoutfirstname(ScoutFirstNameTxt.getText());
+                scoutinfo.setScoutlastname(ScoutLastNameTxt.getText());
+                scoutinfo.setScoutdob((Date) ScoutDOBTxt.getValue());
+ 
+                session.save(scoutinfo);
+                session.getTransaction().commit();
+                session.close();
+                JOptionPane.showMessageDialog(null, "Data added succesfully !");
+            }
+             
+        }catch(HibernateException e){
+            JOptionPane.showMessageDialog(null, "Error occured !");
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_AddScoutBtnActionPerformed
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed

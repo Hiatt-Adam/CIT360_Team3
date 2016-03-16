@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import cit360teamproject.CIT360TeamProject.*;
+import cit360teamproject.HibernateUtil;
 import cit360teamproject.Login;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -44,6 +42,7 @@ public class UserLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("EAGLE SCOUT REQUIREMENTS");
+        setLocationByPlatform(true);
         setName("Eagle Scout Requirements"); // NOI18N
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -172,9 +171,7 @@ public class UserLogin extends javax.swing.JFrame {
         );
 
         UserNameTxt.getAccessibleContext().setAccessibleName("Username");
-        UserNameTxt.getAccessibleContext().setAccessibleDescription("Enter Username");
         UserPassFld.getAccessibleContext().setAccessibleName("Password");
-        UserPassFld.getAccessibleContext().setAccessibleDescription("Enter Password");
         LoginPassword.getAccessibleContext().setAccessibleDescription("Login Password");
 
         pack();
@@ -183,6 +180,17 @@ public class UserLogin extends javax.swing.JFrame {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // insert statement to check if username or password line are blank. return error if either blank
         // insert statement to compare username/password with database. If no match, return error. If match, login
+        
+        try {
+        if (UserNameTxt.getText().isEmpty() == true || LoginPassword.getText().isEmpty() == true){
+                JOptionPane.showMessageDialog(null, "Please fill all fields");
+        }
+        
+        
+        }catch(HibernateException e){
+            JOptionPane.showMessageDialog(null, "Error occured !");
+            e.printStackTrace();
+        }
         if (evt.getSource() == LoginButton) {
             this.dispose();
             NewOrExistingScout newOrExistingScout = new NewOrExistingScout();
@@ -191,24 +199,35 @@ public class UserLogin extends javax.swing.JFrame {
 
     private void CreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateUserActionPerformed
         // insert statement to verify valid username/password
-        // insert statement to add user to DB and create blank tables for user.
+        // create blank tables for user.
+        try {
+        if (UserNameTxt.getText().isEmpty() == true || LoginPassword.getText().isEmpty() == true){
+                JOptionPane.showMessageDialog(null, "Please fill all fields");
+        }
+        else{        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Login login = new Login();
+        login.setEmail(UserNameTxt.getText());
+        login.setPassword(LoginPassword.getText());
         
-        String email, password;
-        email = UserNameTxt.getText();
-        password = LoginPassword.getText();
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        Session s = sf.openSession();
-        Transaction tr = s.beginTransaction();
-        Login l = new Login(email, password);
-        s.save(l);
-        tr.commit();
-        s.close();
+        session.save(login);
+        session.getTransaction().commit();
+        session.close();
+        JOptionPane.showMessageDialog(null, "Username and password created successfully!");
         
         
         if (evt.getSource() == CreateUser) {
             this.dispose();
             NewOrExistingScout newOrExistingScout = new NewOrExistingScout();            
+            }
         }
+         }catch(HibernateException e){
+            JOptionPane.showMessageDialog(null, "Error occured !");
+            e.printStackTrace();
+        
+        
+         }
     }//GEN-LAST:event_CreateUserActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

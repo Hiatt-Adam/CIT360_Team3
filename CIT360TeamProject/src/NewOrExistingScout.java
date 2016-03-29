@@ -21,9 +21,6 @@ public class NewOrExistingScout extends javax.swing.JFrame implements ActionList
     public NewOrExistingScout() {
         initComponents();
         // listener to open this window
-        JButton open = new JButton("New Window");
-        open.addActionListener(this);
-        add(open);
         setVisible(true);
     }
 

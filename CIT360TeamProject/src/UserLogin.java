@@ -7,6 +7,7 @@ import cit360teamproject.HibernateUtil;
 import cit360teamproject.Login;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -201,10 +202,23 @@ public class UserLogin extends javax.swing.JFrame {
         // insert statement to verify valid username/password
         // create blank tables for user.
         try {
-        if (UserNameTxt.getText().isEmpty() == true || LoginPassword.getText().isEmpty() == true){
+            
+        if (UserNameTxt.getText() != null && LoginPassword.getText() != null)
+            {
                 JOptionPane.showMessageDialog(null, "Please fill all fields");
-        }
-        else{        
+                UserLogin userLogin = new UserLogin();
+                userLogin.setVisible(true);
+                
+            }
+        else if (UserNameTxt.getText() != null)
+        {
+                Query query = HibernateUtil.getSessionFactory().openSession().createQuery("from users where username = :username");
+                query.setParameter("email", UserNameTxt);
+                query.uniqueResult();
+        }        
+        
+        else{
+            
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Login login = new Login();
@@ -217,10 +231,10 @@ public class UserLogin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Username and password created successfully!");
         
         
-        if (evt.getSource() == CreateUser) {
             this.dispose();
-            NewOrExistingScout newOrExistingScout = new NewOrExistingScout();            
-            }
+            NewOrExistingScout newOrExistingScout = new NewOrExistingScout();   
+            newOrExistingScout.setVisible(true);
+        
         }
          }catch(HibernateException e){
             JOptionPane.showMessageDialog(null, "Error occured !");

@@ -34,14 +34,17 @@ public class BadgeRequirements extends javax.swing.JFrame implements ActionListe
         add(open);
         setVisible(true);
     }
-    private String QUERY_BASED_ON_MERIT_BADGE="select * from badgereqs b where meritbadge like '";
+    
 
     
     
     private void runQueryBasedOnMeritBadge(){
         
         executeHQLQuery (QUERY_BASED_ON_MERIT_BADGE + SelectMeritBadgeBox.getSelectedItem());
+        
     }
+    private String QUERY_BASED_ON_MERIT_BADGE="select * from badgereqs where meritbadge = ";
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -197,7 +200,7 @@ public class BadgeRequirements extends javax.swing.JFrame implements ActionListe
 
     private void SelectMeritBadgeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectMeritBadgeBoxActionPerformed
     Object selectedItem = SelectMeritBadgeBox.getSelectedItem();
-if (selectedItem != null)
+    if (selectedItem != null)
 {
     String selectedItemStr = selectedItem.toString();
     runQueryBasedOnMeritBadge();

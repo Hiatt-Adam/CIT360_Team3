@@ -1,12 +1,8 @@
 
-import java.awt.List;
+import cit360teamproject.Scoutinfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.persistence.Table;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -168,6 +164,9 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
 
     private void SelectScoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectScoutBtnActionPerformed
         // insert statement to select scout from DB
+        int row = ExistingScoutTable.getSelectedRow();
+
+        
         if (evt.getSource() == SelectScoutBtn) {
             this.dispose();
             BadgeOrEagleReqs badgeOrEagleReqs = new BadgeOrEagleReqs();

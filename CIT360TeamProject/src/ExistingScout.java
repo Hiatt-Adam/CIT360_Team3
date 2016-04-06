@@ -1,8 +1,15 @@
 
+import cit360teamproject.HibernateUtil;
 import cit360teamproject.Scoutinfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Vector;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,9 +34,43 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
         open.addActionListener(this);
         add(open);
         setVisible(true);
+        runQueryScouts();
     }
     
-    
+    private static String QUERY_SCOUT="from Scoutinfo";
+    private void runQueryScouts(){
+        executeHQLQuery(QUERY_SCOUT);
+    }
+    private void executeHQLQuery(String hql){
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery(hql);
+            List resultList = q.list();
+            displayResult(resultList);
+            session.getTransaction().commit();
+        }catch (HibernateException he){
+            he.printStackTrace();
+    }
+    }
+        
+        private void displayResult(List resultList){
+        Vector<String> tableHeaders = new Vector<String>();
+        Vector tableData = new Vector();
+        tableHeaders.add("First Name");
+        tableHeaders.add("Last Name");
+        tableHeaders.add("Date of Birth");
+
+        for(Object o : resultList){
+            Scoutinfo scoutInfo = (Scoutinfo) o;
+            Vector<Object> oneRow = new Vector<Object>();
+            oneRow.add(scoutInfo.getScoutfirstname());
+            oneRow.add(scoutInfo.getScoutlastname());
+            oneRow.add(scoutInfo.getScoutdob());
+            tableData.add(oneRow);
+}
+        ExistingScoutTable.setModel(new DefaultTableModel(tableData,tableHeaders));
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -159,6 +200,8 @@ public class ExistingScout extends javax.swing.JFrame implements ActionListener 
         if (evt.getSource() == BackBtn) {
             this.dispose();
             NewOrExistingScout newOrExistingScout = new NewOrExistingScout();
+            
+            
         }
     }//GEN-LAST:event_BackBtnActionPerformed
 

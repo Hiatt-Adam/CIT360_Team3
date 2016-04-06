@@ -15,7 +15,9 @@ public class Badgereqs  implements java.io.Serializable {
      private short reqnumber;
      private String reqdetails;
      private Date reqcompleteddate;
+     private String meritbadge;
 
+    
     public Badgereqs() {
     }
 
@@ -23,10 +25,11 @@ public class Badgereqs  implements java.io.Serializable {
     public Badgereqs(short reqnumber) {
         this.reqnumber = reqnumber;
     }
-    public Badgereqs(short reqnumber, String reqdetails, Date reqcompleteddate) {
+    public Badgereqs(short reqnumber, String reqdetails, Date reqcompleteddate, String meritbadge) {
        this.reqnumber = reqnumber;
        this.reqdetails = reqdetails;
        this.reqcompleteddate = reqcompleteddate;
+       this.meritbadge = meritbadge;
     }
    
     public short getReqnumber() {
@@ -51,6 +54,13 @@ public class Badgereqs  implements java.io.Serializable {
         this.reqcompleteddate = reqcompleteddate;
     }
 
+    public String getMeritbadge() {
+        return meritbadge;
+    }
+
+    public void setMeritbadge(String meritbadge) {
+        this.meritbadge = meritbadge;
+    }
 
 
 

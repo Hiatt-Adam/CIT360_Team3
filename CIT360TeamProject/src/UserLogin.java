@@ -22,6 +22,23 @@ public class UserLogin extends javax.swing.JFrame {
     public UserLogin() {
         initComponents();
     }
+    private static String QUERY_LOGIN="from Login where email = ";
+    private void runQueryScouts(){
+        executeHQLQuery(QUERY_LOGIN + UserNameTxt.getText());
+    }
+    
+    private void executeHQLQuery(String hql){
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery(hql);
+    
+
+        }catch (HibernateException he){
+            he.printStackTrace();
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -201,24 +218,25 @@ public class UserLogin extends javax.swing.JFrame {
     private void CreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateUserActionPerformed
         // insert statement to verify valid username/password
         // create blank tables for user.
-        try {
+         try {
             
-        if (UserNameTxt.getText() != null && LoginPassword.getText() != null)
+        if (UserNameTxt.getText() == null || LoginPassword.getText() == null)
             {
                 JOptionPane.showMessageDialog(null, "Please fill all fields");
                 UserLogin userLogin = new UserLogin();
                 userLogin.setVisible(true);
-                
+            /*    
             }
         else if (UserNameTxt.getText() != null)
         {
-                Query query = HibernateUtil.getSessionFactory().openSession().createQuery("from users where username = :username");
+                Query query = HibernateUtil.getSessionFactory().openSession().createQuery("from Login where email = :UserNameTxt");
                 query.setParameter("email", UserNameTxt);
                 query.uniqueResult();
+                 */
         }        
         
         else{
-            
+           
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Login login = new Login();

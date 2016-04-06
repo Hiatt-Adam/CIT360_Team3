@@ -43,7 +43,7 @@ public class BadgeRequirements extends javax.swing.JFrame implements ActionListe
         executeHQLQuery (QUERY_BASED_ON_MERIT_BADGE + SelectMeritBadgeBox.getSelectedItem());
         
     }
-    private String QUERY_BASED_ON_MERIT_BADGE="select * from badgereqs where meritbadge = ";
+    private String QUERY_BASED_ON_MERIT_BADGE="from Badgereqs where meritbadge = ";
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,7 +57,7 @@ public class BadgeRequirements extends javax.swing.JFrame implements ActionListe
         eagleScoutReqsLbl1 = new javax.swing.JLabel();
         BadgeReqLbl = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        BadgeReqTbl = new javax.swing.JTable();
+        resultTable = new javax.swing.JTable();
         BackBtn = new javax.swing.JButton();
         CompleteBtn = new javax.swing.JButton();
         SelectMeritBadgeBox = new javax.swing.JComboBox<>();
@@ -83,8 +83,8 @@ public class BadgeRequirements extends javax.swing.JFrame implements ActionListe
         BadgeReqLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BadgeReqLbl.setName("BadgeReqLbl"); // NOI18N
 
-        BadgeReqTbl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
-        BadgeReqTbl.setModel(new javax.swing.table.DefaultTableModel(
+        resultTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
+        resultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -107,17 +107,17 @@ public class BadgeRequirements extends javax.swing.JFrame implements ActionListe
                 return canEdit [columnIndex];
             }
         });
-        BadgeReqTbl.setToolTipText("Merit Badge Requirements");
-        BadgeReqTbl.setColumnSelectionAllowed(true);
-        BadgeReqTbl.setName("BadgeReqTbl"); // NOI18N
-        BadgeReqTbl.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(BadgeReqTbl);
-        BadgeReqTbl.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (BadgeReqTbl.getColumnModel().getColumnCount() > 0) {
-            BadgeReqTbl.getColumnModel().getColumn(0).setPreferredWidth(8);
-            BadgeReqTbl.getColumnModel().getColumn(2).setPreferredWidth(10);
+        resultTable.setToolTipText("Merit Badge Requirements");
+        resultTable.setColumnSelectionAllowed(true);
+        resultTable.setName("resultTable"); // NOI18N
+        resultTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(resultTable);
+        resultTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (resultTable.getColumnModel().getColumnCount() > 0) {
+            resultTable.getColumnModel().getColumn(0).setPreferredWidth(8);
+            resultTable.getColumnModel().getColumn(2).setPreferredWidth(10);
         }
-        BadgeReqTbl.getAccessibleContext().setAccessibleName("Merit Badge Requirements");
+        resultTable.getAccessibleContext().setAccessibleName("Merit Badge Requirements");
 
         BackBtn.setText("Back");
         BackBtn.setToolTipText("Back");
@@ -138,7 +138,7 @@ public class BadgeRequirements extends javax.swing.JFrame implements ActionListe
             }
         });
 
-        SelectMeritBadgeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Citizenship in the Community", "Merit Badge 2", "Merit Badge 3", "Merit Badge 4", "Merit Badge 5", "Merit Badge 6", "Merit Badge 7", "Merit Badge 8", "Merit Badge 9", "Merit Badge 10", " " }));
+        SelectMeritBadgeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "'Citizenship in the Community'", "Merit Badge 2", "Merit Badge 3", "Merit Badge 4", "Merit Badge 5", "Merit Badge 6", "Merit Badge 7", "Merit Badge 8", "Merit Badge 9", "Merit Badge 10", "" }));
         SelectMeritBadgeBox.setToolTipText("Select a Merit Badge to Display");
         SelectMeritBadgeBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,11 +265,11 @@ public class BadgeRequirements extends javax.swing.JFrame implements ActionListe
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
     private javax.swing.JLabel BadgeReqLbl;
-    private javax.swing.JTable BadgeReqTbl;
     private javax.swing.JButton CompleteBtn;
     private javax.swing.JComboBox<String> SelectMeritBadgeBox;
     private javax.swing.JLabel eagleScoutReqsLbl1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable resultTable;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -283,7 +283,7 @@ public class BadgeRequirements extends javax.swing.JFrame implements ActionListe
     tableHeaders.add("Requirement Number"); 
     tableHeaders.add("Requirement Details");
     tableHeaders.add("Requirement Completion Date");
-    
+   
 
     for(Object o : resultList) {
         Badgereqs badgereqs = (Badgereqs)o;

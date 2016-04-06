@@ -140,7 +140,7 @@ public class BadgeOrEagleReqs extends javax.swing.JFrame implements ActionListen
     private void EagleReqsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EagleReqsBtnActionPerformed
         if (evt.getSource() == EagleReqsBtn){
             this.dispose();
-            EagleReqs eagleReqs = new EagleReqs();
+            EagleRequirements eagleReqs = new EagleRequirements();
         }
     }//GEN-LAST:event_EagleReqsBtnActionPerformed
 

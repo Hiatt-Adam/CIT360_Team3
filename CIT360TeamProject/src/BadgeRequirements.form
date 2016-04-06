@@ -120,7 +120,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="BadgeReqTbl">
+        <Component class="javax.swing.JTable" name="resultTable">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -157,7 +157,7 @@
               </TableColumnModel>
             </Property>
             <Property name="columnSelectionAllowed" type="boolean" value="true"/>
-            <Property name="name" type="java.lang.String" value="BadgeReqTbl" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="resultTable" noResource="true"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
@@ -200,7 +200,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="12">
             <StringItem index="0" value="-- Select --"/>
-            <StringItem index="1" value="Citizenship in the Community"/>
+            <StringItem index="1" value="&apos;Citizenship in the Community&apos;"/>
             <StringItem index="2" value="Merit Badge 2"/>
             <StringItem index="3" value="Merit Badge 3"/>
             <StringItem index="4" value="Merit Badge 4"/>
@@ -210,7 +210,7 @@
             <StringItem index="8" value="Merit Badge 8"/>
             <StringItem index="9" value="Merit Badge 9"/>
             <StringItem index="10" value="Merit Badge 10"/>
-            <StringItem index="11" value=" "/>
+            <StringItem index="11" value=""/>
           </StringArray>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Select a Merit Badge to Display"/>

@@ -1,7 +1,18 @@
 
+import cit360teamproject.Eaglereqs;
+import cit360teamproject.HibernateUtil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,19 +24,58 @@ import javax.swing.JButton;
  *
  * @author hiattech
  */
-public class EagleReqs extends javax.swing.JFrame implements ActionListener{
+public class EagleRequirements extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form EagleReqs
      */
-    public EagleReqs() {
+    public EagleRequirements() {
         initComponents();
         // listener to open this window
         JButton open = new JButton("New Window");
         open.addActionListener(this);
         add(open);
         setVisible(true);
+        runQueryReqs();
     }
+    
+    private static String QUERY_REQS="from Eaglereqs";
+    private void runQueryReqs(){
+    executeHQLQuery(QUERY_REQS);
+    }
+    
+    private void executeHQLQuery(String hql){
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery(hql);
+            List resultList = q.list();
+            displayResult(resultList);
+            session.getTransaction().commit();
+        }catch (HibernateException he){
+            he.printStackTrace();
+        }
+    }
+    
+    private void displayResult(List resultList){
+        Vector<String> tableHeaders = new Vector<String>();
+        Vector tableData = new Vector();
+        tableHeaders.add("Requirement Number");
+        tableHeaders.add("Requirement Description");
+        tableHeaders.add("Date Completed");
+        
+        for(Object o : resultList){
+            Eaglereqs eagleReqs = (Eaglereqs)o;
+            Vector<Object> oneRow = new Vector<Object>();
+            oneRow.add(eagleReqs.getRequirementnumber());
+            oneRow.add(eagleReqs.getRequirement());
+            oneRow.add(eagleReqs.getDatecompleted());
+            tableData.add(oneRow);
+            
+        }
+        resultTable.setModel(new DefaultTableModel(tableData,tableHeaders));
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +89,7 @@ public class EagleReqs extends javax.swing.JFrame implements ActionListener{
         eagleScoutReqsLbl1 = new javax.swing.JLabel();
         EagleReqLbl = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        resultTable = new javax.swing.JTable();
         BackBtn = new javax.swing.JButton();
         MarkCompleteBtn = new javax.swing.JButton();
 
@@ -64,7 +114,7 @@ public class EagleReqs extends javax.swing.JFrame implements ActionListener{
         EagleReqLbl.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         EagleReqLbl.setName("EagleReqLbl"); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        resultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -76,21 +126,28 @@ public class EagleReqs extends javax.swing.JFrame implements ActionListener{
                 {null, null, null}
             },
             new String [] {
-                "Completed", "Description", "Completed Date"
+                "Requirement Numer", "Requirement Description", "Completed Date"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 true, false, true
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        resultTable.setColumnSelectionAllowed(true);
+        resultTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(resultTable);
+        resultTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         BackBtn.setText("Back");
         BackBtn.setToolTipText("Previous Menu");
@@ -178,20 +235,21 @@ public class EagleReqs extends javax.swing.JFrame implements ActionListener{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EagleReqs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EagleReqs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EagleRequirements.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EagleReqs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EagleRequirements.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EagleReqs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EagleRequirements.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (java.lang.InstantiationException ex) {
+            Logger.getLogger(EagleRequirements.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EagleReqs().setVisible(true);
+                new EagleRequirements().setVisible(true);
             }
         });
     }
@@ -202,7 +260,7 @@ public class EagleReqs extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JButton MarkCompleteBtn;
     private javax.swing.JLabel eagleScoutReqsLbl1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable resultTable;
     // End of variables declaration//GEN-END:variables
 
     @Override

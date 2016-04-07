@@ -1,6 +1,8 @@
+package cit360teamproject;
 
-import cit360teamproject.Badgereqs;
-import cit360teamproject.HibernateUtil;
+
+import cit360teamproject.HibernateFiles.Badgereqs;
+import cit360teamproject.HibernateFiles.HibernateUtil;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

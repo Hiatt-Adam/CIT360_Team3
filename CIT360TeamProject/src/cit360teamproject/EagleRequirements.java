@@ -1,6 +1,8 @@
+package cit360teamproject;
 
-import cit360teamproject.Eaglereqs;
-import cit360teamproject.HibernateUtil;
+
+import cit360teamproject.HibernateFiles.Eaglereqs;
+import cit360teamproject.HibernateFiles.HibernateUtil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;

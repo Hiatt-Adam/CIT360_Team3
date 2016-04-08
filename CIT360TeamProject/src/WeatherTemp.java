@@ -1,5 +1,3 @@
-package cit360teamproject;
-/*
 
 import com.teknikindustries.yahooweather.WeatherDisplay;
 import com.teknikindustries.yahooweather.WeatherDoc;
@@ -18,12 +16,12 @@ public final class WeatherTemp extends javax.swing.JFrame {
 
     /**
      * Creates new form WeatherTemp
-     
+     */
     public WeatherTemp() {
         initComponents();
         getWeather();
     }
-    /*
+    
     private void getWeather()
     {
         WeatherDoc doc = new WeatherDoc("2487384", "f");

@@ -29,7 +29,7 @@ public class DateClient {
      */
     public static void main(String[] args) throws IOException {
         String serverAddress = "localhost";
-                /* JOptionPane.showInputDialog(
+            /* JOptionPane.showInputDialog(
             "Enter IP Address of a machine that is\n" +
             "running the date service on port 9090:");
 */

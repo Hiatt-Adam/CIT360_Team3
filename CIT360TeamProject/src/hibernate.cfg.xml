@@ -9,9 +9,9 @@
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</property>
-    <mapping resource="cit360teamproject/HibernateFiles/Badgereqs.hbm.xml"/>
-    <mapping resource="cit360teamproject/HibernateFiles/Eaglereqs.hbm.xml"/>
-    <mapping resource="cit360teamproject/HibernateFiles/Login.hbm.xml"/>
-    <mapping resource="cit360teamproject/HibernateFiles/Scoutinfo.hbm.xml"/>
+    <mapping resource="cit360teamproject/Badgereqs.hbm.xml"/>
+    <mapping resource="cit360teamproject/Eaglereqs.hbm.xml"/>
+    <mapping resource="cit360teamproject/Login.hbm.xml"/>
+    <mapping resource="cit360teamproject/Scoutinfo.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,12 +1,10 @@
-package cit360teamproject;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import cit360teamproject.HibernateFiles.HibernateUtil;
-import cit360teamproject.HibernateFiles.Login;
+import cit360teamproject.HibernateUtil;
+import cit360teamproject.Login;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;

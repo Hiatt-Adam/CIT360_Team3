@@ -1,4 +1,4 @@
-package cit360teamproject.HibernateFiles;
+package cit360teamproject;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

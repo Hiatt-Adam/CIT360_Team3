@@ -1,13 +1,18 @@
-package cit360teamproject;
 
-
-import cit360teamproject.HibernateFiles.Badgereqs;
-import cit360teamproject.HibernateFiles.HibernateUtil;
+import cit360teamproject.Badgereqs;
+import cit360teamproject.HibernateUtil;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -211,8 +216,18 @@ public class BadgeRequirements extends javax.swing.JFrame implements ActionListe
     }//GEN-LAST:event_SelectMeritBadgeBoxActionPerformed
 
     private void CompleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompleteBtnActionPerformed
-        // insert statement to mark badge complete and set the date in DB
-
+        try {
+            // insert statement to mark badge complete and set the date in DB
+            Socket s = new Socket("localhost", 9090);
+            BufferedReader input =
+                    new BufferedReader(new InputStreamReader(s.getInputStream()));
+            String answer = input.readLine();
+            JOptionPane.showMessageDialog(null, 
+                    "The requirement has been marked complete with date: \n" + answer);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(BadgeRequirements.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_CompleteBtnActionPerformed
 
     

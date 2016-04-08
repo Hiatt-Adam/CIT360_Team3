@@ -1,4 +1,4 @@
-package cit360teamproject.HibernateFiles;
+package cit360teamproject;
 
  
 // Generated Mar 8, 2016 11:54:47 AM by Hibernate Tools 4.3.1

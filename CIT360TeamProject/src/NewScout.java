@@ -1,8 +1,6 @@
-package cit360teamproject;
 
-
-import cit360teamproject.HibernateFiles.HibernateUtil;
-import cit360teamproject.HibernateFiles.Scoutinfo;
+import cit360teamproject.HibernateUtil;
+import cit360teamproject.Scoutinfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
